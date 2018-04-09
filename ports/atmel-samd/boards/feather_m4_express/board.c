@@ -3,7 +3,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Radomir Dopieralski
+ * Copyright (c) 2017 Scott Shawcroft for Adafruit Industries
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,25 +24,15 @@
  * THE SOFTWARE.
  */
 
-#ifndef MICROPY_INCLUDED_SHARED_MODULE__STAGE_LAYER_H
-#define MICROPY_INCLUDED_SHARED_MODULE__STAGE_LAYER_H
+#include "boards/board.h"
+#include "mpconfigboard.h"
 
-#include <stdint.h>
-#include <stdbool.h>
+void board_init(void) {
+}
 
-#include "py/obj.h"
+bool board_requests_safe_mode(void) {
+    return false;
+}
 
-typedef struct {
-    mp_obj_base_t base;
-    uint8_t *map;
-    uint8_t *graphic;
-    uint8_t *palette;
-    int16_t x, y;
-    uint8_t width, height;
-    uint8_t frame;
-    uint8_t rotation;
-} layer_obj_t;
-
-uint16_t get_layer_pixel(layer_obj_t *layer, uint16_t x, uint16_t y);
-
-#endif  // MICROPY_INCLUDED_SHARED_MODULE__STAGE_LAYER
+void reset_board(void) {
+}
